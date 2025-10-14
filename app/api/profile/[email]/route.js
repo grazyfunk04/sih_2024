@@ -43,8 +43,7 @@ export async function PUT(request, { params }) {
         }
 
         const body = await request.json();
-        const { age, userType, gender, height, weight, phone, address, coins, reward, designation, experience } = body;
-        const name = data.name;
+        const { name, age, userType, gender, height, weight, phone, address, coins, reward, designation, experience } = body;
         
         if (!age || !userType || !gender || !height || !weight || !phone || !address) {
             return NextResponse.json({ success: false, message: 'Missing required fields' }, { status: 400 });

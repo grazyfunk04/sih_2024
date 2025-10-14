@@ -21,11 +21,11 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include", // Important: This ensures cookies are sent and received
           body: JSON.stringify({ email, password }),
         });
 
         result = await result.json();
-        console.log(result)
 
         if (result.success) {
           alert("Login success");
@@ -43,12 +43,10 @@ const Login = () => {
       <Navbar />
       <div className="flex justify-center items-center h-screen">
         <div className="bg-white flex rounded-2xl shadow-lg gap-2 p-6 py-8">
-          {/* left section */}
           <div>
             <Image src={"/Login.jpg"} width={450} height={450} />
           </div>
 
-          {/* right section */}
           <div className="flex flex-col justify-center items-center gap-4 mx-4">
             <h2 className="text-3xl">Login</h2>
             <Input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="bg-white" />

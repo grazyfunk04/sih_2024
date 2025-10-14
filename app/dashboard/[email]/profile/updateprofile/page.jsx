@@ -40,7 +40,7 @@ const UpdateProfile = () => {
       gender,
       height : Number(height),
       weight : Number(weight),
-      email,
+      // email,
       address,
       coins,
       reward,
@@ -146,7 +146,7 @@ const UpdateProfile = () => {
             </div>
 
             {/* Email */}
-            <div>
+            {/* <div>
               <Label htmlFor="email">Email</Label>
               <Input
                 type="email"
@@ -156,7 +156,7 @@ const UpdateProfile = () => {
                 className='bg-white'
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
+            </div> */}
 
             {/* Address */}
             <div>

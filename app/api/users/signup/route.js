@@ -3,6 +3,7 @@ import { User } from "@/lib/model/user"
 import { Profile } from '@/lib/model/profile';
 import mongoose from 'mongoose';
 import { NextResponse } from 'next/server';
+import bycrypt from "bcryptjs";
 
 export async function POST(request) {
     try{
@@ -10,7 +11,12 @@ export async function POST(request) {
         const { name, email, password } = req;
         await mongoose.connect(connString);
     
-        let user = new User(req);
+        let user = new User({
+            name : name,
+            email : email,
+            password : bycrypt.hashSync(password, 8)
+        });
+        
         let profile = new Profile({
             name : name,
             email : email

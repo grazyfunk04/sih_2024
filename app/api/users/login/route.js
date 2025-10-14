@@ -2,7 +2,7 @@ import { connString } from '@/lib/db';
 import { User } from "@/lib/model/user"
 import mongoose from 'mongoose';
 import { NextResponse } from 'next/server';
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 mongoose.connect(connString);
@@ -20,7 +20,7 @@ export async function POST(request) {
         }
         
         //check if password is correct
-        const validPassword = await password == user.password;
+        const validPassword = await bcrypt.compareSync(password, user.password);
 
         if(!validPassword) {
             return NextResponse.json({error: "Invalid Password"}, {status:400})
